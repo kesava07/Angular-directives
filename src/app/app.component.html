@@ -1,20 +1,39 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg-8">
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Show odd numbers</button>
+      <ul class="list-group mt-3">
+        <div *ngIf="onlyOdd">
+          <li class="list-group-item" *ngFor="let odd of oddNumbers" [ngClass]="{'text-dark': odd % 2 !==0}"
+            [ngStyle]="{backgroundColor:odd % 2 !==0 ? 'lightgray': 'transperent'}"> {{odd}}
+          </li>
+        </div>
 
+        <div *appUnless="onlyOdd">
+          <li class="list-group-item" *ngFor="let even of evenNumbers" [ngClass]="{'text-primary': even % 2 ===0}"
+            [ngStyle]="{backgroundColor:odd % 2 !==0 ? 'lightblue': 'transperent'}">
+            {{even }} </li>
+        </div>
+
+        <!-- <div *ngIf="!onlyOdd">
+          <li class="list-group-item" *ngFor="let even of evenNumbers" [ngClass]="{'text-primary': even % 2 ===0}"
+            [ngStyle]="{backgroundColor:odd % 2 !==0 ? 'lightblue': 'transperent'}">
+            {{even }} </li>
+        </div> -->
+
+        <!-- <ng-template [ngIf]="!onlyOdd">
+          <p>Chenna kesava</p>
+        </ng-template> -->
+
+      </ul>
+      <h3 appBasicHighlight class="mt-4">Hello i'm a basic highlight directive</h3>
+      <h3 [appBetterHighlight]="'blue'" defaultValue="green" class="mt-4">Hello i'm a better highlight directive</h3>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">The value is 5</p>
+        <p *ngSwitchCase="10">The value is 10</p>
+        <p *ngSwitchCase="100">The value is 100</p>
+        <p *ngSwitchDefault>The value is default</p>
+      </div>
+    </div>
+  </div>
+</div>
